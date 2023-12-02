@@ -6,7 +6,7 @@
 /*   By: chlimous <chlimous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 18:40:50 by chlimous          #+#    #+#             */
-/*   Updated: 2023/11/30 04:28:11 by chlimous         ###   ########.fr       */
+/*   Updated: 2023/12/02 18:17:48 by chlimous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include <stdint.h>
 
 typedef struct s_static
 {
