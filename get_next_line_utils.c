@@ -6,7 +6,7 @@
 /*   By: chlimous <chlimous@student.42.fr>	    +#+  +:+	   +#+	      */
 /*						  +#+#+#+#+#+	+#+	      */
 /*   Created: 2023/11/28 18:40:29 by chlimous	       #+#    #+#	      */
-/*   Updated: 2023/12/01 19:39:27 by chlimous         ###   ########.fr       */
+/*   Updated: 2023/12/02 18:49:20 by chlimous         ###   ########.fr       */
 /*									      */
 /* ************************************************************************** */
 
@@ -15,13 +15,16 @@
 bool	is_eol(t_static *persis)
 {
 	size_t	i;
+	size_t	j;
 
-	i = 0;
-	while (i < persis->size)
+	i = persis->size - 1;
+	j = 0;
+	while (j < BUFFER_SIZE && i != (size_t)-1)
 	{
 		if (persis->content[i] == '\n')
 			return (true);
-		i++;
+		i--;
+		j++;
 	}
 	return (false);
 }
@@ -29,15 +32,20 @@ bool	is_eol(t_static *persis)
 size_t	eol_index(t_static *persis)
 {
 	size_t	i;
+	size_t	j;
+	size_t	temp;
 
-	i = 0;
-	while (i < persis->size)
+	i = persis->size - 1;
+	j = 0;
+	temp = persis->size - 1;
+	while (j < BUFFER_SIZE && i != (size_t)-1)
 	{
 		if (persis->content[i] == '\n')
-			return (i);
-		i++;
+			temp = i;
+		i--;
+		j++;
 	}
-	return (persis->size - 1);
+	return (temp);
 }
 
 void	clearstatic(t_static *persis)
