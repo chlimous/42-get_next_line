@@ -6,7 +6,7 @@
 /*   By: chlimous <chlimous@student.42.fr>	    +#+  +:+	   +#+	      */
 /*						  +#+#+#+#+#+	+#+	      */
 /*   Created: 2023/11/28 18:39:46 by chlimous	       #+#    #+#	      */
-/*   Updated: 2023/12/01 20:51:54 by chlimous         ###   ########.fr       */
+/*   Updated: 2023/12/11 00:34:51 by chlimous         ###   ########.fr       */
 /*									      */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ char	*get_next_line(int fd)
 		return (NULL);
 	else
 		buffer = malloc(sizeof(char) * BUFFER_SIZE);
+	if (!buffer)
+		return (clearstatic(&persis[fd]), NULL);
 	bytesread = 1;
 	while (bytesread > 0 && !is_eol(&persis[fd]))
 	{
