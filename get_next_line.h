@@ -6,20 +6,20 @@
 /*   By: chlimous <chlimous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 18:40:50 by chlimous          #+#    #+#             */
-/*   Updated: 2023/12/02 18:59:51 by chlimous         ###   ########.fr       */
+/*   Updated: 2023/12/11 23:59:21 by chlimous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
-
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 typedef struct s_static
 {
