@@ -6,7 +6,7 @@
 /*   By: chlimous <chlimous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 22:00:40 by chlimous          #+#    #+#             */
-/*   Updated: 2023/12/01 22:00:44 by chlimous         ###   ########.fr       */
+/*   Updated: 2023/12/14 17:07:56 by chlimous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main()
 	i = 0;
 	while (fd != -1)
 	{
-		fd = open("foo.txt", O_RDONLY);
+		fd = open("samples/foo.txt", O_RDONLY);
 		i++;
 		printf("Open #%d -> %d\n", i, fd);
 	}
