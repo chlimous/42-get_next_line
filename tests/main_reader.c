@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	i = 0;
-	while (i <= atoi(argv[argc - 1]))
+	while (i < atoi(argv[argc - 1]))
 	{
 		printf("Iteration %d:\n", i);
 		j = 0;
