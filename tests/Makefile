@@ -6,7 +6,7 @@
 #    By: chlimous <chlimous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/01 05:11:53 by chlimous          #+#    #+#              #
-#    Updated: 2023/12/22 15:34:26 by chlimous         ###   ########.fr        #
+#    Updated: 2023/12/31 01:04:38 by chlimous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ NAME_BONUS3 = stdin_bonus
 NAME_BONUS4 = checkfd_bonus
 NAME_BONUS5 = chrono_bonus
 NAME_BONUS6 = checkfdmax
+NAME_SAMPLE_GEN = generator
 
 SRCS_M = $(addprefix ../, get_next_line.c get_next_line_utils.c)
 SRCS_BONUS = $(addprefix ../, get_next_line_bonus.c get_next_line_utils_bonus.c)
@@ -34,6 +35,7 @@ SRCS_BONUS3 = $(SRCS_BONUS) main_stdin.c
 SRCS_BONUS4 = $(SRCS_BONUS) main_checkfd_bonus.c
 SRCS_BONUS5 = $(SRCS_BONUS) main_chrono.c
 SRCS_BONUS6 = main_checkfdmax.c
+SRCS_SAMPLE_GEN = samples/sample_generator.c
 
 OBJS1 = $(SRCS1:.c=.o)
 OBJS2 = $(SRCS2:.c=.o)
@@ -45,6 +47,8 @@ OBJS_BONUS3 = $(SRCS_BONUS3:.c=.o)
 OBJS_BONUS4 = $(SRCS_BONUS4:.c=.o)
 OBJS_BONUS5 = $(SRCS_BONUS5:.c=.o)
 OBJS_BONUS6 = $(SRCS_BONUS6:.c=.o)
+OBJS_SAMPLE_GEN = $(SRCS_SAMPLE_GEN:.c=.o)
+
 
 INCLUDE = ..
 
@@ -61,9 +65,9 @@ else
 	$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@ -D BUFFER_SIZE=$(BUFFER_SIZE)
 endif
 
-mandatory: $(NAME1) $(NAME2) $(NAME3) $(NAME4)
+mandatory: $(NAME1) $(NAME2) $(NAME3) $(NAME4) $(NAME_SAMPLE_GEN)
 
-bonus: $(NAME_BONUS1) $(NAME_BONUS2) $(NAME_BONUS3) $(NAME_BONUS4) $(NAME_BONUS5) $(NAME_BONUS6)
+bonus: $(NAME_BONUS1) $(NAME_BONUS2) $(NAME_BONUS3) $(NAME_BONUS4) $(NAME_BONUS5) $(NAME_BONUS6) $(NAME_SAMPLE_GEN)
 
 all: mandatory bonus
 
@@ -97,7 +101,12 @@ $(NAME_BONUS5): $(OBJS_BONUS5)
 $(NAME_BONUS6): $(OBJS_BONUS6)
 	$(CC) $(CFLAGS) $(OBJS_BONUS6) -o $(NAME_BONUS6)
 
+$(NAME_SAMPLE_GEN): $(OBJS_SAMPLE_GEN)
+	$(CC) $(CFLAGS) $(OBJS_SAMPLE_GEN) -o $(NAME_SAMPLE_GEN)
+	mv $(NAME_SAMPLE_GEN) samples
+
 clean: clean_m clean_bonus
+	rm -f $(OBJS_SAMPLE_GEN)
 
 clean_m:
 	rm -f $(OBJS1) $(OBJS2) $(OBJS3) $(OBJS4)
@@ -106,6 +115,7 @@ clean_bonus:
 	rm -f $(OBJS_BONUS1) $(OBJS_BONUS2) $(OBJS_BONUS3) $(OBJS_BONUS4) $(OBJS_BONUS5) $(OBJS_BONUS6)
 
 fclean: fclean_m fclean_bonus
+	rm -f samples/$(NAME_SAMPLE_GEN)
 
 fclean_m: clean_m
 	rm -f $(NAME1) $(NAME2) $(NAME3) $(NAME4)
