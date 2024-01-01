@@ -6,7 +6,7 @@
 /*   By: chlimous <chlimous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 00:40:57 by chlimous          #+#    #+#             */
-/*   Updated: 2023/12/31 00:57:09 by chlimous         ###   ########.fr       */
+/*   Updated: 2024/01/01 23:33:59 by chlimous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
     	if (fd == -1)
         	return 1;
 	srand(time(NULL));
+	i = 0;
 	while (i < atoi(argv[1]))
 	{
 		j = 0;
